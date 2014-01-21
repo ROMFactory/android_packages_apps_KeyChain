@@ -254,6 +254,7 @@ public class KeyChainActivity extends Activity {
                 // possibly new content after install returns
                 dialog.dismiss();
                 Credentials.getInstance().install(KeyChainActivity.this);
+		mState = State.INITIAL;
             }
         });
 
@@ -382,7 +383,6 @@ public class KeyChainActivity extends Activity {
                         getIntent().getIBinderExtra(KeyChain.EXTRA_RESPONSE));
         if (keyChainAliasResponse != null) {
             new ResponseSender(keyChainAliasResponse, alias).execute();
-            return;
         }
         finish();
     }
